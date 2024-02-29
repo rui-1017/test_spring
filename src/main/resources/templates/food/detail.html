@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+<head
+  th:replace="common/head :: head_fragment(title = '給餌記録詳細', scripts = ~{::script}, links = ~{::link})"></head>
+<body>
+  <div class="container">
+    <h1>給餌記録詳細</h1>
+    <div th:object="${food}">
+      <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">品目</div>
+        <div class="col pt-3 border">
+          <p th:text="*{food}"></p>
+
+        </div>
+        <div th:object="${food}">
+      <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">備考</div>
+        <div class="col pt-3 border">
+          <p th:text="*{note}"></p>
+        </div>
+
+      </div>
+    </div>
+    <br />
+    <div class="text-center">
+      <a th:href="@{/food/{id}/edit(id=*{id})}" class="btn btn-primary" >　編集　</a>
+      <a th:href="@{/food/{id}/delete(id=*{id})}" class="btn btn-secondary">　削除　</a>
+      <a href="/food/list" class="btn btn-secondary">一覧に戻る</a>
+    </div>
+  </div>
+</body>
+</html>
